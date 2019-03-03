@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-
+set -x
 if ! which ansible-playbook > /dev/null; then 
-	apt remove ansible -y
-	apt-add-repository ppa:ansible/ansible
-	apt update
-	apt install ansible -y
+	sudo apt remove ansible -y
+	sudo apt-add-repository ppa:ansible/ansible
+	sudo apt update
+	sudo apt install ansible -y
 fi
 
 if [ -z "$1" ];

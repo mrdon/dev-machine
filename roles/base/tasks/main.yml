@@ -1,6 +1,7 @@
 ---
 
 - name: Run this Playbook every two hours
+  become: yes
   cron: 
     name: "Run Ansible playbook" 
     hour: "*/2" 
