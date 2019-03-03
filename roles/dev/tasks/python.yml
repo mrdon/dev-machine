@@ -1,0 +1,28 @@
+---
+ 
+- name: Install prereq packages
+  become: yes
+  apt:
+    name: ['software-properties-common']
+    state: present
+    update_cache: yes
+ 
+- name: Add deadsnakes repo
+  become: yes
+  apt_repository:
+    repo: ppa:deadsnakes/ppa
+    state: present
+ 
+# sudo apt-get update
+- name: Update apt packages
+  become: yes
+  apt:
+    update_cache: yes
+
+- name: Install python 3.7
+  become: yes
+  apt:
+    name: ['python3.7', 'python3.7-venv', 'python3.7-doc', 'python3.7-dev']
+    state: present
+    update_cache: yes
+  

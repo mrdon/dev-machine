@@ -1,0 +1,18 @@
+---
+
+- name: Create Git configs
+  git_config: scope=global name={{ item.name }} value={{ item.value }}
+  with_items:
+    - { name: 'user.name', value: '{{ display_name }}' }
+    - { name: 'user.email', value: '{{ email }}' }
+    - { name: 'alias.st', value: "status" }
+    - { name: 'alias.last', value: "log -1 HEAD" }
+    - { name: 'alias.undo-commit', value: "reset HEAD~" }
+
+- name: Set up global git ignores
+  git_config: scope=global name=core.excludesfile value=~/.gitignore_global
+
+- name: Copy global git ignore
+  copy: 
+    src: ".gitignore_global"
+    dest: $HOME

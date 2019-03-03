@@ -1,0 +1,12 @@
+---
+
+- hosts: all
+
+  vars_files:
+    - vars/vars.yml
+
+  roles:
+    - base
+    - dev
+    - git
+    - gnome

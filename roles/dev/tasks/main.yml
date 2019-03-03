@@ -1,0 +1,31 @@
+---
+
+- name: Copy .vimrc
+  copy: 
+    src: ".vimrc"
+    dest: $HOME
+- name: Copy .bash_profile
+  copy: 
+    src: ".bash_profile"
+    dest: $HOME
+
+- name: Import python tasks
+  include_tasks: python.yml
+
+- name: Import docker tasks
+  include_tasks: docker.yml
+
+# - name: Install snap applications
+#   snap:
+#     name:
+#       - whatsdesk
+#       - chromium
+#       - keepassxc
+#       - spotify
+# - name: Install snap applications (classic)
+#   snap:
+#     classic: yes
+#     name:
+#       - sublime-text
+#       - slack
+#       - pycharm-community

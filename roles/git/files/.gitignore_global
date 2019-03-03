@@ -1,0 +1,14 @@
+.idea
+.gradle
+**/*.iml
+**/*.ipr
+**/*.iws
+*~
+*.egg-info
+**/node_modules
+**/target
+**/.cache
+**/__pycache__
+venv
+*.pyc
+*.log
