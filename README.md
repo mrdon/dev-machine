@@ -13,3 +13,7 @@ Simply run `./ansible.sh` and follow the prompts (for the first time only).
 ### One Liner
 
 `git clone git@github.com:mrdon/dev-machine.git && cd dev-machine && ./ansible.sh`
+
+### Credits
+
+Heavily inspired by https://github.com/SteveEdson/dev-machine
