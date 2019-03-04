@@ -1,13 +1,15 @@
 ---
 
 - name: Copy .vimrc
-  copy: 
-    src: ".vimrc"
-    dest: $HOME
+  file:
+    src: "{{ playbook_dir }}/roles/dev/files/.vimrc"
+    dest: $HOME/.vimrc
+    state: link
 - name: Copy .bash_profile
-  copy: 
-    src: ".bash_profile"
-    dest: $HOME
+  file:
+    src: "{{ playbook_dir }}/roles/dev/files/.bash_profile"
+    dest: $HOME/.bash_profile
+    state: link
 
 - name: Import python tasks
   include_tasks: python.yml

@@ -13,6 +13,7 @@
   git_config: scope=global name=core.excludesfile value=~/.gitignore_global
 
 - name: Copy global git ignore
-  copy: 
-    src: ".gitignore_global"
-    dest: $HOME
+  file:
+    src: "{{ playbook_dir }}/roles/git/files/.gitignore_global"
+    dest: $HOME/.gitignore_global
+    state: link
