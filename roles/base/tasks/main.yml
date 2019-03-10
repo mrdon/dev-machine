@@ -8,4 +8,4 @@
     minute: "0"
     job: "cd {{ playbook_dir }} && git pull && ./ansible.sh"
     user: "{{ user }}"
-    cron_file: ansible-dev-machine
+    cron_file: "ansible-dev-machine-{{ user }}"

@@ -3,10 +3,12 @@
 - hosts: all
 
   vars_files:
-    - user-vars.yml
+    - vars/user.yml
+    - vars/github.yml
 
   roles:
     - base
+    - tic80
     - dev
     - git
     - gnome
