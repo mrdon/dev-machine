@@ -5,8 +5,12 @@
   apt: 
     name: python-psutil
 
+- include: facts.yml
+- include: create-profile.yml
+
+
 - name: Set keyboard shortcuts
-  dconf: key="/org/gnome/terminal/legacy/keybindings/{{ item.name }}" value="' {{ item.value }}'"
+  dconf: key="/org/gnome/terminal/legacy/keybindings/{{ item.name }}" value="'{{ item.value }}'"
   with_items:
   - { name: 'copy', value: '<Primary>c' }
   - { name: 'find', value: '<Primary>f' }
