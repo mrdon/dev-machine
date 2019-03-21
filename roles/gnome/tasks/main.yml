@@ -20,3 +20,8 @@
   - { name: 'paste', value: '<Primary>v' }
   - { name: 'prev-tab', value: '<Shift>Left' }
   - { name: 'reset-and-clear', value: '<Primary>k' }
+
+- name: Set scrollback-unlimited
+  dconf:
+    key: "/org/gnome/terminal/legacy/profiles:/{{profileid}}scrollback-unlimited"
+    value: "true"
