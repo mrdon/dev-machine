@@ -2,6 +2,7 @@
 
 - name: Install psutil
   become: yes
+  become_user: root
   apt: 
     name: python-psutil
 

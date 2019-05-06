@@ -2,10 +2,11 @@
 
 - name: Run this Playbook every two hours
   become: yes
+  become_user: root
   cron: 
     name: "Run Ansible playbook" 
     hour: "*/2" 
     minute: "0"
     job: "cd {{ playbook_dir }} && git pull && ./ansible.sh"
-    user: "{{ user }}"
+    user: "root"
     cron_file: "ansible-dev-machine-{{ user }}"

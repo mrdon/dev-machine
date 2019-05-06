@@ -43,8 +43,8 @@ fi
 if [ -z "$1" ];
 then
     : # $1 was not given
-    ansible-playbook -i "localhost," -c local --vault-id $VAULT_FILE playbook.yml --ask-become-pass
+    sudo ansible-playbook -i "localhost," -c local --vault-id $VAULT_FILE playbook.yml -b --become-user=`whoami`
 else
     : # $1 was given
-    ansible-playbook -i "localhost," -c local --vault-id $VAULT_FILE playbook.yml --ask-become-pass --start-at-task "$1"
+    sudo ansible-playbook -i "localhost," -c local --vault-id $VAULT_FILE playbook.yml -b --become-user=`whoami` --start-at-task "$1"
 fi

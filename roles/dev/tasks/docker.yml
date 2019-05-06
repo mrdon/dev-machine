@@ -3,6 +3,7 @@
 # sudo apt-get install *
 - name: Install docker packages
   become: yes
+  become_user: root
   apt:
     name: ['apt-transport-https', 'ca-certificates', 'curl', 'software-properties-common']
     state: present
@@ -11,6 +12,7 @@
 # curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 - name: Add Docker s official GPG key
   become: yes
+  become_user: root
   apt_key:
     url: https://download.docker.com/linux/ubuntu/gpg
     state: present
@@ -18,6 +20,7 @@
 # sudo apt-key fingerprint 0EBFCD88
 - name: Verify that we have the key with the fingerprint
   become: yes
+  become_user: root
   apt_key:
     id: 0EBFCD88
     state: present
@@ -25,6 +28,7 @@
 # sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable"
 - name: Set up the stable repository
   become: yes
+  become_user: root
   apt_repository:
     repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable
     state: present
@@ -33,12 +37,14 @@
 # sudo apt-get update
 - name: Update apt packages
   become: yes
+  become_user: root
   apt:
     update_cache: yes
   
 # sudo apt-get install docker-ce=18.03.*
 - name: Install docker
   become: yes
+  become_user: root
   apt:
     name: docker-ce
     state: present
@@ -48,6 +54,7 @@
 # sudo groupadd docker
 - name: Create "docker" group
   become: yes
+  become_user: root
   group:
     name: "docker"
     state: present
@@ -55,6 +62,7 @@
 # sudo usermod -aG docker ubuntu
 - name: Add current user to "docker" group
   become: yes
+  become_user: root
   user:
     name: "{{ user }}"
     group: "docker"
@@ -62,5 +70,7 @@
   
 # sudo apt-get install docker-compose=1.8.*
 - name: Install docker-compose
+  become: yes
+  become_user: root
   pip:
     name: docker-compose
