@@ -2,7 +2,9 @@
  
 - name: add apt key for nodesource
   become: yes
-  apt_key: url=https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+  become_user: root
+  apt_key:
+    url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
 
 - name: add repo for nodesource
   become: yes
@@ -12,7 +14,8 @@
 
 - name: install nodejs
   become: yes
-  apt: name=nodejs
+  apt:
+    name: nodejs
 
 - name: Install yarn globally.
   become: yes

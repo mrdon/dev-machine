@@ -71,6 +71,5 @@
 # sudo apt-get install docker-compose=1.8.*
 - name: Install docker-compose
   become: yes
-  become_user: root
-  pip:
+  apt:
     name: docker-compose

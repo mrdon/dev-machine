@@ -1,0 +1,26 @@
+---
+
+- name: Install obs prereqs
+  become: yes
+  apt:
+    name: ['ffmpeg']
+    state: present
+    update_cache: yes
+ 
+- name: Add obs repo
+  become: yes
+  apt_repository:
+    repo: ppa:obsproject/obs-studio
+    state: present
+ 
+- name: Update apt packages
+  become: yes
+  apt:
+    update_cache: yes
+  
+- name: Install obs
+  become: yes
+  apt:
+    name: obs-studio
+    state: present
+    update_cache: yes

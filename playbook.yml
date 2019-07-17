@@ -8,6 +8,7 @@
 
   roles:
     - base
+    - streaming
     - tic80
     - dev
     - git
