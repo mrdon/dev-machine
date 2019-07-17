@@ -17,6 +17,9 @@
 - name: Import docker tasks
   include_tasks: docker.yml
 
+- name: Import nodejs tasks
+  include_tasks: nodejs.yml
+
 # - name: Install snap applications
 #   snap:
 #     name:

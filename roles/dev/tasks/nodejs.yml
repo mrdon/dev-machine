@@ -1,0 +1,21 @@
+---
+ 
+- name: add apt key for nodesource
+  become: yes
+  apt_key: url=https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+
+- name: add repo for nodesource
+  become: yes
+  apt_repository:
+    repo: 'deb https://deb.nodesource.com/node_12.x bionic main'
+    update_cache: yes
+
+- name: install nodejs
+  become: yes
+  apt: name=nodejs
+
+- name: Install yarn globally.
+  become: yes
+  npm:
+    name: yarn
+    global: yes
