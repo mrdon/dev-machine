@@ -26,7 +26,15 @@
   become: yes
   become_user: root
   apt:
-    name: ['python3.7', 'python3.7-venv', 'python3.7-doc', 'python3.7-dev']
+    name: ['python3.7', 'python3.7-venv', 'python3.7-doc', 'python3.7-dev', 'python3-pip']
+    state: present
+    update_cache: yes
+  
+- name: Install python 3.8
+  become: yes
+  become_user: root
+  apt:
+    name: ['python3.8', 'python3.8-venv', 'python3.8-doc', 'python3.8-dev']
     state: present
     update_cache: yes
   
