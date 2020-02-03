@@ -1,0 +1,49 @@
+---
+
+- name: Import yarn tasks
+  include_tasks: yarn.yml
+
+- name: Import let-me-in tasks
+  include_tasks: let-me-in.yml
+
+- name: Import kubernetes tasks
+  include_tasks: kubernetes.yml
+
+- name: Import kubectx tasks
+  include_tasks: kubectx.yml
+
+- name: Import kustomize tasks
+  include_tasks: kustomize.yml
+
+- name: Import kubefwd tasks
+  include_tasks: kubefwd.yml
+
+- name: Import yq tasks
+  include_tasks: yq.yml
+
+- name: Import xmlsec tasks
+  include_tasks: xmlsec.yml
+
+- name: Install jq
+  become: yes
+  become_user: root
+  apt:
+    name: jq
+    state: present
+    update_cache: yes
+
+- name: Install AWS CLI
+  become: yes
+  become_user: root
+  pip:
+    executable: "pip3"
+    name: awscli
+    state: latest
+
+- name: Install aws google auth
+  become: yes
+  become_user: root
+  pip:
+    executable: "pip3"
+    name: aws-google-auth
+    state: latest

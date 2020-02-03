@@ -1,0 +1,40 @@
+---
+ 
+- name: Install kubernetes prereq packages
+  become: yes
+  become_user: root
+  apt:
+    name: ['apt-transport-https']
+    state: present
+    update_cache: yes
+ 
+- name: Add kubernetes s official GPG key
+  become: yes
+  become_user: root
+  apt_key:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    state: present
+ 
+- name: Set up the stable repository
+  become: yes
+  become_user: root
+  apt_repository:
+    repo: deb [arch=amd64] https://apt.kubernetes.io/ kubernetes-xenial main
+    state: present
+    update_cache: yes
+ 
+- name: Update apt packages
+  become: yes
+  become_user: root
+  apt:
+    update_cache: yes
+  
+- name: Install kubernetes
+  become: yes
+  become_user: root
+  apt:
+    name: kubectl
+    state: present
+    update_cache: yes
+
+  

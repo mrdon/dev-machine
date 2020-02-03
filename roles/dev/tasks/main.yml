@@ -2,14 +2,20 @@
 
 - name: Copy .vimrc
   file:
-    src: "{{ playbook_dir }}/roles/dev/files/.vimrc"
-    dest: $HOME/.vimrc
+    src: "{{ playbook_dir }}/roles/dev/files/{{ item }}"
+    dest: "$HOME/{{ item }}"
     state: link
-- name: Copy .bash_profile
+  with_items:
+    - .vimrc
+    - .tmux.conf
+    - .bash_profile_git
+    - .bash_profile_tmux
+    - .bash_profile_bin
+
+- name: Creates local bin directory
   file:
-    src: "{{ playbook_dir }}/roles/dev/files/.bash_profile"
-    dest: $HOME/.bash_profile
-    state: link
+    path: $HOME/.local/bin
+    state: directory
 
 - name: Import python tasks
   include_tasks: python.yml
@@ -20,17 +26,27 @@
 - name: Import nodejs tasks
   include_tasks: nodejs.yml
 
-# - name: Install snap applications
-#   snap:
-#     name:
-#       - whatsdesk
-#       - chromium
-#       - keepassxc
-#       - spotify
-# - name: Install snap applications (classic)
-#   snap:
-#     classic: yes
-#     name:
-#       - sublime-text
-#       - slack
-#       - pycharm-community
+- name: Import apt tasks
+  include_tasks: apt.yml
+
+- name: Import flatpak tasks
+  include_tasks: flatpak.yml
+
+- name: Install snap applications
+  become: yes
+  become_user: root
+  snap:
+    name:
+      - whatsdesk
+      - chromium
+      - keepassxc
+      - spotify
+- name: Install snap applications (classic)
+  become: yes
+  become_user: root
+  snap:
+    classic: yes
+    name:
+      - sublime-text
+      - slack
+      - pycharm-community

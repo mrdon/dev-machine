@@ -1,0 +1,23 @@
+---
+ 
+- name: Add yq repo
+  become: yes
+  become_user: root
+  apt_repository:
+    repo: ppa:rmescandon/yq
+    state: present
+
+- name: Update apt packages
+  become: yes
+  become_user: root
+  apt:
+    update_cache: yes
+
+- name: Install yq
+  become: yes
+  become_user: root
+  apt:
+    name: yq
+    state: present
+    update_cache: yes
+  

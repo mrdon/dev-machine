@@ -1,0 +1,25 @@
+
+# sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
+#sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
+#sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
+---
+- name: Clone kubectx
+  git:
+    repo: 'https://github.com/ahmetb/kubectx'
+    dest: "{{src_dir}}/kubectx"
+
+- name: Link kubectx
+  become: yes
+  become_user: root
+  file:
+    src: "{{ src_dir }}/kubectx/kubectx"
+    dest: /usr/local/bin/kubectx
+    state: link
+
+- name: Link kubens
+  become: yes
+  become_user: root
+  file:
+    src: "{{ src_dir }}/kubectx/kubens"
+    dest: /usr/local/bin/kubens
+    state: link

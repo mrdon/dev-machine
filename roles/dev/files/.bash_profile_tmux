@@ -1,0 +1,1 @@
+alias tkill="tmux kill-session"

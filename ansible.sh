@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if ! which ansible-playbook > /dev/null; then 
-    sudo apt install python-pip
+    sudo apt install python3-pip
     sudo pip install github3.py==1.0.0a4
     sudo apt remove ansible -y
     sudo apt-add-repository ppa:ansible/ansible
@@ -23,6 +23,7 @@ if [ ! -f ${USER_VARS_FILE} ]; then
 
     username=`whoami`
     playbook_dir=`pwd`
+    src_dir="$(dirname "$playbook_dir")"
 
     echo $vault_pwd > $VAULT_FILE
     chmod 600 $VAULT_FILE
@@ -31,6 +32,7 @@ user: $username
 display_name: $display_name
 email: $email
 playbook_dir: $playbook_dir
+src_dir: $src_dir
 EOF1
 fi
 

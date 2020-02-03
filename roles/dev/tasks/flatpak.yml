@@ -1,0 +1,26 @@
+---
+ 
+- name: install flatpak
+  become: yes
+  become_user: root
+  apt:
+    name:
+      - flatpak
+      - gnome-software-plugin-flatpak
+
+- name: Add the default flatpak remote to the system installation
+  become: yes
+  become_user: root
+  flatpak_remote:
+    name: flathub
+    state: present
+    flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
+
+- name: Install flatpak apps
+  become: yes
+  become_user: root
+  flatpak:
+    name:  "{{ item }}"
+    state: present
+  with_items:
+    - us.zoom.Zoom

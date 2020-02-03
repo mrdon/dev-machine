@@ -1,0 +1,28 @@
+---
+
+- name: Check that let-me-in exists
+  stat:
+    path: /usr/local/bin/let-me-in
+  register: stat_result
+
+- name: Get latest release of let-me-in
+  github_release:
+    token: "{{ github_repos_public_mrdon }}"
+    user: rlister
+    repo: let-me-in
+    action: latest_release
+  when: stat_result.stat.exists == False
+  register: letmein_release
+
+- name: Download latest let-me-in release
+  get_url:
+    url: "https://github.com/rlister/let-me-in/releases/download/{{ letmein_release.tag}}/let-me-in_{{ letmein_release.tag[1:] }}_amd64.deb"
+    dest: /tmp/let-me-in.deb
+  when: stat_result.stat.exists == False
+
+- name: Install let-me-in
+  become: yes
+  become_user: root
+  apt: deb="/tmp/let-me-in.deb"
+  when: stat_result.stat.exists == False
+

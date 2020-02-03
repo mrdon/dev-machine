@@ -1,0 +1,13 @@
+- name: Install prereq packages
+  become: yes
+  become_user: root
+  apt:
+    name: ['libxml2-dev', 'libxmlsec1-dev', 'libxmlsec1-openssl']
+    state: present
+    update_cache: yes
+
+#- name: Install xmlsec
+#  become: yes
+#  become_user: root
+#  pip:
+#    name: xmlsec
