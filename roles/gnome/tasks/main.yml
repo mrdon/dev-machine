@@ -2,8 +2,7 @@
 
 - name: Install psutil
   become: yes
-  become_user: root
-  apt: 
+  apt:
     name: python-psutil
 
 - include: facts.yml

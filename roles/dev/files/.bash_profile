@@ -1,0 +1,1 @@
+for f in $HOME/.bash_profile_*; do source $f; done

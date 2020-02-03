@@ -1,6 +1,5 @@
 ---
 - name: get gnome profile id
-  become: false
   command: dconf list "/org/gnome/terminal/legacy/profiles:/"
   register: dconfprofiles
   changed_when: false

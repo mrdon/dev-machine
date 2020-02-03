@@ -14,9 +14,9 @@
   register: kustomize_release
 - name: Download latest kustomize release
   become: yes
-  become_user: root
-  get_url:
-    url: "https://github.com/kubernetes-sigs/kustomize/releases/download/{{ kustomize_release.tag}}/kustomize_{{ kustomize_release.tag[1:] }}_linux_amd64"
-    dest: /usr/local/bin/kustomize
+  unarchive:
+    src: "https://github.com/kubernetes-sigs/kustomize/releases/download/{{ kustomize_release.tag}}/{{ kustomize_release.tag.replace('/','_') }}_linux_amd64.tar.gz"
+    dest: /usr/local/bin
+    remote_src: yes
     mode: 755
   when: stat_result.stat.exists == False

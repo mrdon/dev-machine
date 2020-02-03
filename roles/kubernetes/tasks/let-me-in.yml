@@ -22,7 +22,6 @@
 
 - name: Install let-me-in
   become: yes
-  become_user: root
   apt: deb="/tmp/let-me-in.deb"
   when: stat_result.stat.exists == False
 

@@ -2,7 +2,7 @@
 
 if ! which ansible-playbook > /dev/null; then 
     sudo apt install python3-pip
-    sudo pip install github3.py==1.0.0a4
+    sudo pip3 install github3.py==1.0.0a4
     sudo apt remove ansible -y
     sudo apt-add-repository ppa:ansible/ansible
     sudo apt update
@@ -42,11 +42,14 @@ if [ -f user-vars.yml ]; then
     mv -f user-vars.yml vars/user.yml
 fi
 
+username=`whoami`
 if [ -z "$1" ];
 then
     : # $1 was not given
-    sudo ansible-playbook -i "localhost," -c local --vault-id $VAULT_FILE playbook.yml -b --become-user=`whoami`
+    sudo echo "Running as root"
+    ansible-playbook -i "localhost," -c local --vault-id $VAULT_FILE playbook.yml
 else
     : # $1 was given
-    sudo ansible-playbook -i "localhost," -c local --vault-id $VAULT_FILE playbook.yml -b --become-user=`whoami` --start-at-task "$1"
+    sudo echo "Running as root"
+    ansible-playbook -i "localhost," -c local --vault-id $VAULT_FILE playbook.yml --start-at-task "$1"
 fi

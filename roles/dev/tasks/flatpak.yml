@@ -2,7 +2,6 @@
  
 - name: install flatpak
   become: yes
-  become_user: root
   apt:
     name:
       - flatpak
@@ -10,7 +9,6 @@
 
 - name: Add the default flatpak remote to the system installation
   become: yes
-  become_user: root
   flatpak_remote:
     name: flathub
     state: present
@@ -18,7 +16,6 @@
 
 - name: Install flatpak apps
   become: yes
-  become_user: root
   flatpak:
     name:  "{{ item }}"
     state: present

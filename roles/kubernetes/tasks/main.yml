@@ -18,15 +18,11 @@
 - name: Import kubefwd tasks
   include_tasks: kubefwd.yml
 
-- name: Import yq tasks
-  include_tasks: yq.yml
-
 - name: Import xmlsec tasks
   include_tasks: xmlsec.yml
 
 - name: Install jq
   become: yes
-  become_user: root
   apt:
     name: jq
     state: present
@@ -34,7 +30,6 @@
 
 - name: Install AWS CLI
   become: yes
-  become_user: root
   pip:
     executable: "pip3"
     name: awscli
@@ -42,7 +37,6 @@
 
 - name: Install aws google auth
   become: yes
-  become_user: root
   pip:
     executable: "pip3"
     name: aws-google-auth

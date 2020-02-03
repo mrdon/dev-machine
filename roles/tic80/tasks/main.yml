@@ -19,7 +19,6 @@
   when: stat_result.stat.exists == False
 - name: Install tic80
   become: yes
-  become_user: root
   unarchive:
     src: /tmp/tic80.tar.gz
     dest: /usr/local/bin

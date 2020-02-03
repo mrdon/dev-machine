@@ -2,14 +2,12 @@
  
 - name: Add yarn s official GPG key
   become: yes
-  become_user: root
   apt_key:
     url: https://dl.yarnpkg.com/debian/pubkey.gpg
     state: present
  
 - name: Set up the stable repository
   become: yes
-  become_user: root
   apt_repository:
     repo: deb https://dl.yarnpkg.com/debian/ stable main
     state: present
@@ -17,13 +15,11 @@
  
 - name: Update apt packages
   become: yes
-  become_user: root
   apt:
     update_cache: yes
   
 - name: Install yarn
   become: yes
-  become_user: root
   apt:
     name: yarn
     state: present

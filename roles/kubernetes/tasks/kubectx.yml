@@ -10,7 +10,6 @@
 
 - name: Link kubectx
   become: yes
-  become_user: root
   file:
     src: "{{ src_dir }}/kubectx/kubectx"
     dest: /usr/local/bin/kubectx
@@ -18,7 +17,6 @@
 
 - name: Link kubens
   become: yes
-  become_user: root
   file:
     src: "{{ src_dir }}/kubectx/kubens"
     dest: /usr/local/bin/kubens

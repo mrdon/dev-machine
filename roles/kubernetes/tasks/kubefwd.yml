@@ -14,7 +14,6 @@
   register: kubefwd_release
 - name: Download latest kubefwd release
   become: yes
-  become_user: root
   apt:
     deb: "https://github.com/txn2/kubefwd/releases/download/{{ kubefwd_release.tag}}/kubefwd_amd64.deb"
   when: stat_result.stat.exists == False

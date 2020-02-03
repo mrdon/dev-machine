@@ -8,6 +8,7 @@
   with_items:
     - .vimrc
     - .tmux.conf
+    - .bash_profile
     - .bash_profile_git
     - .bash_profile_tmux
     - .bash_profile_bin
@@ -34,16 +35,15 @@
 
 - name: Install snap applications
   become: yes
-  become_user: root
   snap:
     name:
       - whatsdesk
       - chromium
       - keepassxc
       - spotify
+      - yq
 - name: Install snap applications (classic)
   become: yes
-  become_user: root
   snap:
     classic: yes
     name:
