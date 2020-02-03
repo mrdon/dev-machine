@@ -8,6 +8,7 @@
 
   roles:
     - base
+    - tb
     - streaming
     - tic80
     - dev

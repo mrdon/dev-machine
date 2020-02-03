@@ -8,13 +8,13 @@
   pip:
     requirements: "{{ src_dir }}/tb/requirements-dev.txt"
     virtualenv: "{{ src_dir }}/tb/venv"
-    virtualenv_python: python3.7
+    virtualenv_command: /usr/bin/python3.8 -m venv
 
 - name: Install tb
   pip:
     name: "{{ src_dir }}/tb"
     virtualenv: "{{ src_dir }}/tb/venv"
-    virtualenv_python: python3.7
+    virtualenv_command: /usr/bin/python3.8 -m venv
     editable: true
 
 - name: Copy tb to local bin
