@@ -8,7 +8,7 @@
 - name: add repo for nodesource
   become: yes
   apt_repository:
-    repo: 'deb https://deb.nodesource.com/node_12.x bionic main'
+    repo: "deb https://deb.nodesource.com/node_12.x {{ hostvars['localhost']['ansible_lsb']['codename'] }} main"
     update_cache: yes
 
 - name: install nodejs
