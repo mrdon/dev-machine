@@ -9,3 +9,5 @@
       - inkscape
       - tmux
       - ubuntu-restricted-extras
+      - postgresql-client
+      - libpq-dev

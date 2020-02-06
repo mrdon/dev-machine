@@ -5,9 +5,11 @@
     src: "{{ playbook_dir }}/roles/dev/files/{{ item }}"
     dest: "$HOME/{{ item }}"
     state: link
+    force: yes
   with_items:
     - .vimrc
     - .tmux.conf
+    - .profile
     - .bash_profile
     - .bash_profile_git
     - .bash_profile_tmux
@@ -50,3 +52,9 @@
       - sublime-text
       - slack
       - pycharm-community
+
+- name: Install keybase with option --channel=edge
+  become: yes
+  snap:
+    name: keybase
+    channel: edge
