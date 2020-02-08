@@ -11,3 +11,7 @@
       - ubuntu-restricted-extras
       - postgresql-client
       - libpq-dev
+      - hexchat
+      - appmenu-gtk2-module
+      - appmenu-gtk3-module
+      - dconf-editor

@@ -42,6 +42,7 @@ if [ -f user-vars.yml ]; then
     mv -f user-vars.yml vars/user.yml
 fi
 
+sudo service packagekit stop
 username=`whoami`
 if [ -z "$1" ];
 then
@@ -53,3 +54,4 @@ else
     sudo echo "Running as root"
     ansible-playbook -i "localhost," -c local --vault-id $VAULT_FILE playbook.yml --start-at-task "$1"
 fi
+sudo service packagekit start
