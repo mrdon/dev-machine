@@ -8,11 +8,11 @@
 
   roles:
     - base
-    - tb
+      #   - tb
     - streaming
-    - tic80
+      #    - tic80
     - dev
     - git
-    - kubernetes
+#    - kubernetes
     - gnome
 

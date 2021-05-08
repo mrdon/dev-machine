@@ -13,13 +13,13 @@
   apt:
     update_cache: yes
 
-- name: Install python 3.7
+- name: Install python 3.9
   become: yes
   apt:
-    name: ['python3.7', 'python3.7-venv', 'python3.7-doc', 'python3.7-dev', 'python3-pip']
-    state: present
-    update_cache: yes
-  
+     name: ['python3.9', 'python3.9-venv', 'python3.9-doc', 'python3.9-dev', 'python3-pip']
+     state: present
+     update_cache: yes
+   
 - name: Install python 3.8
   become: yes
   apt:
