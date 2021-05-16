@@ -40,7 +40,6 @@
   become: yes
   snap:
     name:
-      - whatsdesk
       - chromium
       - keepassxc
       - spotify
